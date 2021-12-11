@@ -1,16 +1,1 @@
-# farmer_merchant
-
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+It is an web app consisting of two portals .One is for FARMERS and the other is for MERCHANTS . In this they can deal with all the trade of crops which usually they have to do it manually. They'll be able to keep a record of the crops they have ,crops they want to sell and what is the ongoing bar set at the prices of crop and many more such features.
