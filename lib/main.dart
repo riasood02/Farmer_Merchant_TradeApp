@@ -1,14 +1,13 @@
-import 'package:farmer_merchant/screens/authenticate/sign_in.dart';
+
 import 'package:farmer_merchant/screens/wrapper.dart';
 import 'package:farmer_merchant/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
-import 'package:community_material_icon/community_material_icon.dart';
+
 import 'package:provider/provider.dart';
 
-import 'home/home.dart';
 import 'models/farmer_user.dart';
 
 void main() async {
@@ -52,7 +51,7 @@ class MyApp extends StatelessWidget {
 //
 //   @override
 //   void initState() {
-//     // TODO: implement initState
+//
 //     super.initState();
 //     _tapGestureRecognizer = TapGestureRecognizer()
 //       ..onTap = (){

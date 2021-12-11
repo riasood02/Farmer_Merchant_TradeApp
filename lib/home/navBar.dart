@@ -1,18 +1,22 @@
 import 'package:farmer_merchant/home/account.dart';
 import 'package:farmer_merchant/home/apmc.dart';
 import 'package:farmer_merchant/home/loan.dart';
+
 import 'package:farmer_merchant/services/auth.dart';
 import 'package:flutter/material.dart';
+
 
 import 'home.dart';
 
 class NavBar extends StatelessWidget {
-  // const ({Key? key}) : super(key: key);
+   NavBar({Key? key}) : super(key: key);
 
   final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
+    // final user = Provider.of<FarmerData?>(context);
+    // final user1 = Provider.of<FUser?>(context);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -21,8 +25,8 @@ class NavBar extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.black,
             ),
-            accountName: Text('sample'),
-            accountEmail: Text('sample@gmail.com'),
+            accountName: Text(""),
+            accountEmail: Text(""),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.asset('assets/farmers.PNG',

@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmer_merchant/models/farmer_user.dart';
-import 'package:flutter/cupertino.dart';
+
 class DatabaseService{
-  final String? uid;
-  final String? email;
-  DatabaseService({required this.uid,required this.email});
+  final String uid;
+  final String email;
+  final String user_type;
+  DatabaseService({required this.uid,required this.email,required this.user_type});
   //collection reference
   final CollectionReference farmerCollection = FirebaseFirestore.instance.collection('farmer');
   final CollectionReference merchantCollection = FirebaseFirestore.instance.collection('merchant');
@@ -50,25 +51,51 @@ class DatabaseService{
       'username': username,
     });
   }
+  Future updateDocFields1(String fullname,String phno,String state,String city) async {
+    var userDoc = FirebaseFirestore.instance.collection('merchant').doc(email);
+    // userDoc.updateData({'fieldName':'newValue'});
+    userDoc.update({
+      'name': fullname,
+      'phone_number':phno,
+      'State': state,
+      'City': city,
+
+    });
+
+  }
   FarmerData _farmerDataFromSnapshot(DocumentSnapshot snapshot){
     return FarmerData(
         email: email,
+        user_type:snapshot.get('user_type'),
         city:snapshot.get('City'),
         phno: snapshot.get('phone_number'),
         fullname: snapshot.get('name'),
         state: snapshot.get('State'),
-        w_p: '',
-        w_q: '',
-        r_p: '',
-        ma_q: '',
-        mi_q: '',
-        mi_p: '',
-        j_q: '',
-        j_p: '',
-        r_q: '',
-        ma_p: '',
-        c_q: '',
-        c_p: ''
+        w_p: snapshot.get('wheat_price'),
+        w_q: snapshot.get('wheat_quantity'),
+        r_p: snapshot.get('rice_price'),
+        r_q: snapshot.get('rice_quantity'),
+        ma_q: snapshot.get('maize_quantity'),
+        ma_p: snapshot.get('maize_price'),
+        mi_p: snapshot.get('millets_price'),
+        mi_q: snapshot.get('millets_quantity'),
+        j_p: snapshot.get('jute_price'),
+        j_q: snapshot.get('jute_quantity'),
+
+        c_q: snapshot.get('cotton_quantity'),
+        c_p: snapshot.get('cotton_price')
+    );
+  }
+
+  MerchantData _merchantDataFromSnapshot(DocumentSnapshot snapshot){
+    return MerchantData(
+        email: email,
+        user_type:snapshot.get('user_type'),
+        city:snapshot.get('City'),
+        phno: snapshot.get('phone_number'),
+        fullname: snapshot.get('name'),
+        state: snapshot.get('State'),
+
     );
   }
   Stream<QuerySnapshot> get farmer {
@@ -80,6 +107,9 @@ class DatabaseService{
   }
   Stream<FarmerData> get farmerInfo{
     return farmerCollection.doc(email).snapshots().map(_farmerDataFromSnapshot);
+  }
+  Stream<MerchantData> get merchantInfo{
+    return merchantCollection.doc(email).snapshots().map(_merchantDataFromSnapshot);
   }
 
 }

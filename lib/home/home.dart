@@ -1,11 +1,11 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:farmer_merchant/services/auth.dart';
+import 'package:farmer_merchant/home/navBar.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:farmer_merchant/home/navBar.dart';
-import 'package:farmer_merchant/services/auth.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -23,11 +23,10 @@ class _HomeState extends State<Home> {
   bool isFlipped5 = false;
   bool isFlipped6 = false;
 
-
   @override
   Widget build(BuildContext context) {
 
-    Size size = MediaQuery.of(context).size;
+    //Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       drawer: NavBar(),
@@ -72,24 +71,24 @@ class _HomeState extends State<Home> {
 
                 transitionBuilder: (Widget widget, Animation<double> animation) {
 
-              final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
+                  final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
 
-              return AnimatedBuilder(
-              animation: flipAnimation,
-              child: widget,
-              builder: (context,widget){
+                  return AnimatedBuilder(
+                    animation: flipAnimation,
+                    child: widget,
+                    builder: (context,widget){
 
-              final isUnder = (ValueKey(isFlipped1) != widget!.key);
-              final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
-              return Transform(
-              transform: Matrix4.rotationY(value),
-              child: widget,
-              alignment: Alignment.center,
-              );
-              },
+                      final isUnder = (ValueKey(isFlipped1) != widget!.key);
+                      final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
+                      return Transform(
+                        transform: Matrix4.rotationY(value),
+                        child: widget,
+                        alignment: Alignment.center,
+                      );
+                    },
 
-              );
-              },
+                  );
+                },
               ),
               AnimatedSwitcher(
                 reverseDuration: Duration(seconds: 1),
@@ -121,24 +120,24 @@ class _HomeState extends State<Home> {
                 ),
                 transitionBuilder: (Widget widget, Animation<double> animation) {
 
-              final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
+                  final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
 
-              return AnimatedBuilder(
-              animation: flipAnimation,
-              child: widget,
-              builder: (context,widget){
+                  return AnimatedBuilder(
+                    animation: flipAnimation,
+                    child: widget,
+                    builder: (context,widget){
 
-              final isUnder = (ValueKey(isFlipped2) != widget!.key);
-              final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
-              return Transform(
-              transform: Matrix4.rotationY(value),
-              child: widget,
-              alignment: Alignment.center,
-              );
-              },
+                      final isUnder = (ValueKey(isFlipped2) != widget!.key);
+                      final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
+                      return Transform(
+                        transform: Matrix4.rotationY(value),
+                        child: widget,
+                        alignment: Alignment.center,
+                      );
+                    },
 
-              );
-              },
+                  );
+                },
               ),
               AnimatedSwitcher(
                 reverseDuration: Duration(seconds: 1),
@@ -170,24 +169,24 @@ class _HomeState extends State<Home> {
                 ),
                 transitionBuilder: (Widget widget, Animation<double> animation) {
 
-              final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
+                  final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
 
-              return AnimatedBuilder(
-              animation: flipAnimation,
-              child: widget,
-              builder: (context,widget){
+                  return AnimatedBuilder(
+                    animation: flipAnimation,
+                    child: widget,
+                    builder: (context,widget){
 
-              final isUnder = (ValueKey(isFlipped3) != widget!.key);
-              final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
-              return Transform(
-              transform: Matrix4.rotationY(value),
-              child: widget,
-              alignment: Alignment.center,
-              );
-              },
+                      final isUnder = (ValueKey(isFlipped3) != widget!.key);
+                      final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
+                      return Transform(
+                        transform: Matrix4.rotationY(value),
+                        child: widget,
+                        alignment: Alignment.center,
+                      );
+                    },
 
-              );
-              },
+                  );
+                },
               ),
               AnimatedSwitcher(
                 reverseDuration: Duration(seconds: 1),
@@ -219,24 +218,24 @@ class _HomeState extends State<Home> {
                 ),
                 transitionBuilder: (Widget widget, Animation<double> animation) {
 
-              final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
+                  final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
 
-              return AnimatedBuilder(
-              animation: flipAnimation,
-              child: widget,
-              builder: (context,widget){
+                  return AnimatedBuilder(
+                    animation: flipAnimation,
+                    child: widget,
+                    builder: (context,widget){
 
-              final isUnder = (ValueKey(isFlipped4) != widget!.key);
-              final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
-              return Transform(
-              transform: Matrix4.rotationY(value),
-              child: widget,
-              alignment: Alignment.center,
-              );
-              },
+                      final isUnder = (ValueKey(isFlipped4) != widget!.key);
+                      final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
+                      return Transform(
+                        transform: Matrix4.rotationY(value),
+                        child: widget,
+                        alignment: Alignment.center,
+                      );
+                    },
 
-              );
-              },
+                  );
+                },
               ),
               AnimatedSwitcher(
                 reverseDuration: Duration(seconds: 1),
@@ -268,24 +267,24 @@ class _HomeState extends State<Home> {
                 ),
                 transitionBuilder: (Widget widget, Animation<double> animation) {
 
-              final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
+                  final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
 
-              return AnimatedBuilder(
-              animation: flipAnimation,
-              child: widget,
-              builder: (context,widget){
+                  return AnimatedBuilder(
+                    animation: flipAnimation,
+                    child: widget,
+                    builder: (context,widget){
 
-              final isUnder = (ValueKey(isFlipped5) != widget!.key);
-              final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
-              return Transform(
-              transform: Matrix4.rotationY(value),
-              child: widget,
-              alignment: Alignment.center,
-              );
-              },
+                      final isUnder = (ValueKey(isFlipped5) != widget!.key);
+                      final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
+                      return Transform(
+                        transform: Matrix4.rotationY(value),
+                        child: widget,
+                        alignment: Alignment.center,
+                      );
+                    },
 
-              );
-              },
+                  );
+                },
               ),
               AnimatedSwitcher(
                 reverseDuration: Duration(seconds: 1),
@@ -317,24 +316,24 @@ class _HomeState extends State<Home> {
                 ),
                 transitionBuilder: (Widget widget, Animation<double> animation) {
 
-              final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
+                  final flipAnimation = Tween(begin: pi,end: 0.0).animate(animation);
 
-              return AnimatedBuilder(
-              animation: flipAnimation,
-              child: widget,
-              builder: (context,widget){
+                  return AnimatedBuilder(
+                    animation: flipAnimation,
+                    child: widget,
+                    builder: (context,widget){
 
-              final isUnder = (ValueKey(isFlipped6) != widget!.key);
-              final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
-              return Transform(
-              transform: Matrix4.rotationY(value),
-              child: widget,
-              alignment: Alignment.center,
-              );
-              },
+                      final isUnder = (ValueKey(isFlipped6) != widget!.key);
+                      final value = isUnder ? min(flipAnimation.value,pi/2) : flipAnimation.value;
+                      return Transform(
+                        transform: Matrix4.rotationY(value),
+                        child: widget,
+                        alignment: Alignment.center,
+                      );
+                    },
 
-              );
-              },
+                  );
+                },
               ),
             ],
           ),
@@ -400,9 +399,9 @@ class Crop_info extends StatelessWidget {
             ),
             SizedBox(height: 4),
             Text(info,
-            style: TextStyle(
-              fontSize: size.height*0.017,
-            ),),
+              style: TextStyle(
+                fontSize: size.height*0.015,
+              ),),
           ],
         ),
       ),
@@ -480,6 +479,7 @@ class Crops extends StatelessWidget {
               ),
             ),
             child: Column(
+
               children: <Widget>[
                 Text(
                   name,
@@ -497,33 +497,33 @@ class Crops extends StatelessWidget {
                 ),
                 SizedBox(height: 6.0),
                 Text('Average Price:- Rs $pr1',
-                style: TextStyle(
-                  fontSize: size.height*0.019,
-                ),),
+                  style: TextStyle(
+                    fontSize: size.height*0.014,
+                  ),),
                 Text('INR/Quintal',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),),
                 SizedBox(height: 6.0),
                 Text('Costiliest Market Price:- Rs $pr2',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
                 Text('INR/Quintal',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
                 SizedBox(height: 6.0),
                 Text('Cheapest Market Price:- Rs $pr3',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
                 Text('INR/Quintal',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
               ],

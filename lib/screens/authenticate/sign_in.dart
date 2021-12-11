@@ -3,8 +3,7 @@ import 'package:farmer_merchant/services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:farmer_merchant/services/User_Database.dart';
-import 'package:provider/provider.dart';
+
 
 class LoginPage extends StatefulWidget {
 
@@ -25,12 +24,12 @@ class _LoginPageState extends State<LoginPage> {
   String confrmpsswd = "";
   String error = "";
   String UserName="";
-  String _dropdownValue="Farmer";
-  var items = ["Farmer","Merchant"];
+  String _dropdownValue="farmer";
+  var items = ["farmer","merchant"];
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     _tapGestureRecognizer = TapGestureRecognizer()
       ..onTap = (){
@@ -249,54 +248,54 @@ class _LoginPageState extends State<LoginPage> {
 
           Text(error,style: TextStyle(color: Colors.red,fontSize: 6.0)),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(
-
-                children: [
-
-                  Checkbox(
-                    value: isRememberme,
-                    activeColor: Colors.white,
-                    onChanged: (value) {
-                      setState(() {
-                        isRememberme = !isRememberme;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Remember me',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white70,
-                    ),
-                  ),
-
-
-                ],
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    print("hello");
-                  });
-                },
-
-                child: Text(
-                  'Forgot Password ?',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white70,
-                  ),
-                ),
-
-              )
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //   children: [
+          //     Row(
+          //
+          //       children: [
+          //
+          //         Checkbox(
+          //           value: isRememberme,
+          //           activeColor: Colors.white,
+          //           onChanged: (value) {
+          //             setState(() {
+          //               isRememberme = !isRememberme;
+          //             });
+          //           },
+          //         ),
+          //         Text(
+          //           'Remember me',
+          //           style: TextStyle(
+          //             fontSize: 12,
+          //             color: Colors.white70,
+          //           ),
+          //         ),
+          //
+          //
+          //       ],
+          //     ),
+    //           TextButton(
+    //             onPressed: () {
+    //               setState(() {
+    //                 print("hello");
+    //               });
+    //             },
+    //
+    //             child: Text(
+    //               'Forgot Password ?',
+    //               style: TextStyle(
+    //                 fontSize: 12,
+    //                 color: Colors.white70,
+    //               ),
+    //             ),
+    //
+    //           )
+    //         ],
+    //       ),
         ],
       ),
-    );
+     );
   }
 
   Container buildSignupSection() {
@@ -346,6 +345,9 @@ class _LoginPageState extends State<LoginPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: TextField(
+        style: TextStyle(
+          color: Colors.white
+        ),
         obscureText: isPassword || iscpsswd,
 
         keyboardType: isEmail ? TextInputType.emailAddress: TextInputType.text,
@@ -465,7 +467,7 @@ class _LoginPageState extends State<LoginPage> {
                           // print("password is :" + psswd);
                           if(email!="" && psswd!="") {
                               //print("you are signed in");
-                              if(_dropdownValue=="Farmer"){
+                              if(_dropdownValue=="farmer"){
                                 FirebaseFirestore.instance
                                     .collection('farmer')
                                     .doc(email)
@@ -473,7 +475,7 @@ class _LoginPageState extends State<LoginPage> {
                                     .then((DocumentSnapshot documentSnapshot) async {
                                   if (documentSnapshot.exists) {
                                     //print('Document exists on the database');
-                                    dynamic result = await _auth.signInWithEmailandPassword(email, psswd);
+                                    dynamic result = await _auth.signInWithEmailandPassword(email, psswd,_dropdownValue);
 
                                     if(result==null){
                                       setState(() {
@@ -485,7 +487,7 @@ class _LoginPageState extends State<LoginPage> {
                                 });
 
                               }
-                              else if(_dropdownValue=="Merchant"){
+                              else if(_dropdownValue=="merchant"){
                                 FirebaseFirestore.instance
                                     .collection('merchant')
                                     .doc(email)
@@ -493,7 +495,7 @@ class _LoginPageState extends State<LoginPage> {
                                     .then((DocumentSnapshot documentSnapshot) async {
                                   if (documentSnapshot.exists) {
                                     //print('Document exists on the database');
-                                    dynamic result = await _auth.signInWithEmailandPassword(email, psswd);
+                                    dynamic result = await _auth.signInWithEmailandPassword(email, psswd,_dropdownValue);
 
                                     if(result==null){
                                       setState(() {

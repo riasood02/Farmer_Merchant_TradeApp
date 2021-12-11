@@ -2,11 +2,10 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:farmer_merchant/home/navBar1.dart';
-import 'package:farmer_merchant/services/auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:farmer_merchant/home/navBar.dart';
-import 'package:farmer_merchant/services/auth.dart';
+
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class _Home1State extends State<Home1> {
   @override
   Widget build(BuildContext context) {
 
-    Size size = MediaQuery.of(context).size;
+    //Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       drawer: NavBar1(),
@@ -401,7 +400,7 @@ class Crop_info extends StatelessWidget {
             SizedBox(height: 4),
             Text(info,
               style: TextStyle(
-                fontSize: size.height*0.017,
+                fontSize: size.height*0.015,
               ),),
           ],
         ),
@@ -480,6 +479,7 @@ class Crops extends StatelessWidget {
               ),
             ),
             child: Column(
+
               children: <Widget>[
                 Text(
                   name,
@@ -498,32 +498,32 @@ class Crops extends StatelessWidget {
                 SizedBox(height: 6.0),
                 Text('Average Price:- Rs $pr1',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),),
                 Text('INR/Quintal',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),),
                 SizedBox(height: 6.0),
                 Text('Costiliest Market Price:- Rs $pr2',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
                 Text('INR/Quintal',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
                 SizedBox(height: 6.0),
                 Text('Cheapest Market Price:- Rs $pr3',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
                 Text('INR/Quintal',
                   style: TextStyle(
-                    fontSize: size.height*0.019,
+                    fontSize: size.height*0.014,
                   ),
                 ),
               ],

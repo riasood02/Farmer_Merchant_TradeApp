@@ -1,16 +1,21 @@
+
+
 import 'package:farmer_merchant/models/farmer_user.dart';
-import 'package:farmer_merchant/models/farmer_user.dart';
+
 import 'package:farmer_merchant/services/User_Database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 class AuthService {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+
   // create user obj based on firebaseUser
   FUser? _userFromFirebaseUser(User user) {
-    return user != null ? FUser(uid: user.uid,email: user.email!) : null;
+    return FUser(uid: user.uid,email: user.email!, usertype:"farmer");
+    //user != null ?
   }
 
   // auth change user stream
@@ -41,7 +46,7 @@ class AuthService {
   }
 
   // sign in with email and pass
-  Future signInWithEmailandPassword(String email, String password) async {
+  Future signInWithEmailandPassword(String email, String password,String usertype) async {
     try {
 
       UserCredential result = await _auth.signInWithEmailAndPassword(
@@ -58,13 +63,13 @@ class AuthService {
     try{
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
-      if(usertype=="Farmer"){
-      await DatabaseService(uid:user!.uid,email: user!.email).updateFarmerData(email,usertype,username);}
+      if(usertype=="farmer"){
+      await DatabaseService(uid:user!.uid,email: user.email!, user_type: usertype).updateFarmerData(email,usertype,username);}
       else
         {
-          await DatabaseService(uid:user!.uid,email: user!.email).updateMerchantData(email, usertype, username);
+          await DatabaseService(uid:user!.uid,email: user.email!,user_type: usertype).updateMerchantData(email, usertype, username);
         }
-      return _userFromFirebaseUser(user!);
+      return _userFromFirebaseUser(user);
     } catch(e){
       print(e.toString());
       return null;

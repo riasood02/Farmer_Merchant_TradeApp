@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:farmer_merchant/models/farmer_user.dart';
 import 'package:farmer_merchant/services/User_Database.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'navBar.dart';
+import 'package:farmer_merchant/home/navBar.dart';
 
 class Account extends StatefulWidget {
   const Account({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class Account extends StatefulWidget {
 }
 
 class _AccountState extends State<Account> {
-  TextEditingController _controller1 = new TextEditingController();
+  //TextEditingController _controller1 = new TextEditingController();
   String fullname="";
   String em="";
   String phno="";
@@ -39,7 +39,7 @@ class _AccountState extends State<Account> {
     final user = Provider.of<FUser?>(context);
     return StreamBuilder<FarmerData?>(
 
-        stream: DatabaseService(email:user!.email,uid: user.uid).farmerInfo,
+        stream: DatabaseService(email:user!.email!,uid: user.uid!,user_type: user.usertype!).farmerInfo,
         builder: (context,snapshot) {
 
           FarmerData? farmerData = snapshot.data;
@@ -891,7 +891,7 @@ class _AccountState extends State<Account> {
                       ),
                       color: Colors.black,
                       onPressed: () {
-                        DatabaseService(uid: user.uid,email: user.email).updateDocFields(fullname, phno, state, city, wheat_price,wheat_qty, rice_price, rice_qty, maize_price, maize_qty, millets_price, millets_qty, jute_price, jute_qty, cotton_price, cotton_qty);
+                        DatabaseService(uid: user.uid!,email: user.email!,user_type: user.usertype!).updateDocFields(fullname, phno, state, city, wheat_price,wheat_qty, rice_price, rice_qty, maize_price, maize_qty, millets_price, millets_qty, jute_price, jute_qty, cotton_price, cotton_qty);
 
                       },
                       child: Text('Submit',

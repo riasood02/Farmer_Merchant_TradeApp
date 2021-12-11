@@ -1,4 +1,6 @@
-import 'dart:ffi';
+
+
+
 
 import 'package:farmer_merchant/models/farmer_user.dart';
 import 'package:farmer_merchant/services/User_Database.dart';
@@ -6,7 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'navBar.dart';
+
+import 'navBar1.dart';
 
 class Account1 extends StatefulWidget {
   const Account1({Key? key}) : super(key: key);
@@ -17,7 +20,7 @@ class Account1 extends StatefulWidget {
 
 class _Account1State extends State<Account1> {
 
-  TextEditingController _controller1 = new TextEditingController();
+  //TextEditingController _controller1 = new TextEditingController();
   String fullname="";
   String em="";
   String phno="";
@@ -27,8 +30,15 @@ class _Account1State extends State<Account1> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<FUser?>(context);
+    return StreamBuilder<MerchantData?>(
+
+    stream: DatabaseService(email:user!.email!,uid: user.uid!,user_type: user.usertype!).merchantInfo,
+    builder: (context,snapshot) {
+
+    MerchantData? merchantData = snapshot.data;
+
     return Scaffold(
-            drawer: NavBar(),
+            drawer: NavBar1(),
             appBar: AppBar(
               // leading: IconButton(
               //   icon: Icon(
@@ -72,8 +82,10 @@ class _Account1State extends State<Account1> {
                     ),
                     SizedBox(height: 5),
                     TextField(
-                      // controller: TextEditingController(text: farmerData?.fullname),
-                      onChanged: (val) {},
+                      controller: TextEditingController(text: merchantData?.fullname),
+                      onChanged: (val) {setState(() {
+                        fullname=val;
+                      });},
                       decoration:
                       InputDecoration(
                         contentPadding: EdgeInsets.only(bottom: 6, left: 8),
@@ -112,8 +124,10 @@ class _Account1State extends State<Account1> {
                     SizedBox(height: 5),
                     TextField(
 
-                      // controller: TextEditingController(text: farmerData?.email),
-                      onChanged: (val) {},
+                      controller: TextEditingController(text: merchantData?.email),
+                      onChanged: (val) {setState(() {
+                        em=val;
+                      });},
 
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(bottom: 6, left: 8),
@@ -148,8 +162,10 @@ class _Account1State extends State<Account1> {
                     ),
                     SizedBox(height: 5),
                     TextField(
-                      // controller: TextEditingController(text: farmerData?.phno),
-                      onChanged: (val){},
+                      controller: TextEditingController(text:merchantData?.phno),
+                      onChanged: (val){setState(() {
+                        phno=val;
+                      });},
                       decoration:
                       InputDecoration(
                         contentPadding: EdgeInsets.only(bottom: 6, left: 8),
@@ -187,8 +203,10 @@ class _Account1State extends State<Account1> {
                     ),
                     SizedBox(height: 5),
                     TextField(
-                      // controller: TextEditingController(text: farmerData?.state),
-                      onChanged: (val){},
+                      controller: TextEditingController(text: merchantData?.state),
+                      onChanged: (val){setState(() {
+                        state=val;
+                      });},
                       decoration:
                       InputDecoration(
                         contentPadding: EdgeInsets.only(bottom: 6, left: 8),
@@ -225,8 +243,10 @@ class _Account1State extends State<Account1> {
                     ),
                     SizedBox(height: 5),
                     TextField(
-                      // controller: TextEditingController(text: farmerData?.city),
-                      onChanged: (val){},
+                      controller: TextEditingController(text: merchantData?.city),
+                      onChanged: (val){setState(() {
+                        city=val;
+                      });},
                       decoration:
                       InputDecoration(
                         contentPadding: EdgeInsets.only(bottom: 6, left: 8),
@@ -261,7 +281,7 @@ class _Account1State extends State<Account1> {
                       ),
                       color: Colors.black,
                       onPressed: () {},
-                      child: Text('Submit',
+                      child: Text('SAVE',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
@@ -273,6 +293,8 @@ class _Account1State extends State<Account1> {
                 ),
               ),
             ),
-          );
+          );}
+                );
+
   }
 }

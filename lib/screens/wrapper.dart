@@ -18,7 +18,14 @@ class Wrapper extends StatelessWidget {
         return Authenticate();
 
       } else{
-      return Home();
+      if(user.usertype=="farmer") {
+        return Home();
+        print("entered farmer");
+      }
+      else {
+        return Home1();
+        print("entered merchant");
+      }
     }
 
     return Authenticate();
